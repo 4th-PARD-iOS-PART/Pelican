@@ -107,18 +107,28 @@ class OtherProfileController: UIViewController {
     }
     
     private func setupLeftImageButton() {
-        // 이미지 뷰 생성 및 버튼 아이템으로 설정
-        let image = UIImage(named: "back")
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFit
-        imageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        // UIButton 생성 및 설정
+        let backButton = UIButton(type: .system)
+        backButton.setImage(UIImage(named: "back"), for: .normal)
+        backButton.tintColor = .black // 원하는 색으로 설정
+        backButton.contentMode = .scaleAspectFit
+        backButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
-        // 이미지 버튼을 왼쪽 끝에 배치
-        let leftBarButtonItem = UIBarButtonItem(customView: imageView)
+        // 버튼 클릭 시 액션 추가
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        // UIBarButtonItem으로 wrapping하여 navigationItem에 추가
+        let leftBarButtonItem = UIBarButtonItem(customView: backButton)
         navigationItem.leftBarButtonItem = leftBarButtonItem
     }
-    
+
+    @objc private func backButtonTapped() {
+        let locationViewController = LocationViewController()
+        navigationController?.pushViewController(locationViewController, animated: true)
+    }
+
+
     private func setupTypeLabels() {
             // 낭만형 라벨 생성
             let romanceLabel = createRoundedLabel(text: "🥰 낭만형")
