@@ -11,7 +11,6 @@ class LocationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         setGradientBackground()
         
         view.backgroundColor = .systemBackground
