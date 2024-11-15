@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class LocationViewController: UIViewController {
     
     let label:UILabel = {
         let label = UILabel()
@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setGradientBackground()
         
         view.backgroundColor = .systemBackground
         view.addSubview(label)
