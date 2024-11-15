@@ -14,24 +14,37 @@ class ViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabBar()
+        customizeTabBarAppearance()
     }
     
     func setTabBar() {
         let vc1 = UINavigationController(rootViewController: LocationViewController())
-        let vc2 = UINavigationController(rootViewController: OtherProfileController())
-        let vc3 = UINavigationController(rootViewController: ProfileViewController())
+        let vc2 = UINavigationController(rootViewController: ProfileViewController())
         
-        self.viewControllers = [vc1, vc2, vc3]
-        self.tabBar.tintColor = .systemPink
+        self.viewControllers = [vc1, vc2]
+        self.tabBar.tintColor = #colorLiteral(red: 0.7270904779, green: 0.3866576552, blue: 0.9158701301, alpha: 1) // 선택된 아이템 색상
+        self.tabBar.unselectedItemTintColor = UIColor.lightGray // 선택되지 않은 아이템 색상
         self.tabBar.backgroundColor = .white
         
         guard let tabBarItems = self.tabBar.items else { return }
-        tabBarItems[0].image = UIImage(systemName: "heart.circle")
-        tabBarItems[1].image = UIImage(systemName: "person.circle.fill")
-        tabBarItems[2].image = UIImage(systemName: "person.crop.circle.badge.checkmark")
+        
+        // 아이콘과 렌더링 모드 설정
+        tabBarItems[0].image = UIImage(named: "hearts")?.withRenderingMode(.automatic)
+        tabBarItems[1].image = UIImage(named: "user")?.withRenderingMode(.automatic)
         tabBarItems[0].title = "내 주위 띠링"
-        tabBarItems[1].title = "채팅"
-        tabBarItems[2].title = "내 프로필"
+        tabBarItems[1].title = "내 프로필"
+    }
+    
+    func customizeTabBarAppearance() {
+        // 아이콘 간격 설정
+        tabBar.itemPositioning = .centered  // 아이콘 중앙 정렬
+        tabBar.itemSpacing = 111  // 아이콘 간격 설정
+        
+        // 테두리 및 굴곡 설정
+        tabBar.layer.cornerRadius = 20
+        tabBar.layer.masksToBounds = true
+        tabBar.layer.borderColor = UIColor.lightGray.cgColor
+        tabBar.layer.borderWidth = 1.0
     }
 }
 
