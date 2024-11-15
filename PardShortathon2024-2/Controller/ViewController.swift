@@ -1,7 +1,6 @@
 import UIKit
 
 class ViewController: UITabBarController {
-    private var proximityManager: ProximityManager?
     
     let label:UILabel = {
         let label = UILabel()
@@ -12,16 +11,6 @@ class ViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        proximityManager = ProximityManager(userID: "User123")
-        
-        // Request notification permissions
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
-            if granted {
-                print("Notification permissions granted.")
-            } else if let error = error {
-                print("Notification permission error: \(error)")
-            }
-        }
         setTabBar()
     }
     
@@ -34,17 +23,17 @@ class ViewController: UITabBarController {
         self.tabBar.tintColor = .systemPink
         self.tabBar.backgroundColor = .white
         
-        guard let tabBarItems = self.tabBar.items else {return}
-        tabBarItems[0].image = UIImage(systemName: "face.smiling")
-        tabBarItems[1].image = UIImage(systemName: "moon.fill")
-        tabBarItems[2].image = UIImage(systemName: "pawprint.fill")
-        tabBarItems[0].title = "Location"
-        tabBarItems[1].title = "Chat"
-        tabBarItems[2].title = "Profile"
+        guard let tabBarItems = self.tabBar.items else { return }
+        tabBarItems[0].image = UIImage(systemName: "heart.circle")
+        tabBarItems[1].image = UIImage(systemName: "person.circle.fill")
+        tabBarItems[2].image = UIImage(systemName: "person.crop.circle.badge.checkmark")
+        tabBarItems[0].title = "내 주위 띠링"
+        tabBarItems[1].title = "채팅"
+        tabBarItems[2].title = "내 프로필"
     }
 }
 
-//setGradientBackground() 이 코드 넣어서 어디든지 백그라운드 컬러 사용 가느
+//setGradientBackground() 이 코드 넣어서 어디든지 백그라운드 컬러 사용 가능
 extension UIViewController {
     func setGradientBackground() {
         let gradientLayer = CAGradientLayer()

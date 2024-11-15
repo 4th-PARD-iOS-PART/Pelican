@@ -48,14 +48,35 @@ class OtherProfileController: UIViewController {
         label2.textColor = UIColor(hex: "A944E4")
         label2.translatesAutoresizingMaskIntoConstraints = false
         
-        let
+        let label3 = UILabel()
+        label3.text = "서현님은 이런 취미들이 있어요"
+        label3.font = UIFont.systemFont(ofSize: 12)
+        label3.textColor = UIColor(hex: "A944E4")
+        label3.translatesAutoresizingMaskIntoConstraints = false
         
+        
+        let pushButton = UIButton()
+        pushButton.setTitle("서현님께 나를 알리기", for: .normal)
+        pushButton.setTitleColor(.white, for: .normal)
+        pushButton.backgroundColor = UIColor(hex: "A944E4")
+        pushButton.layer.cornerRadius = 10
+        pushButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Frame 29")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         
 
         
         view.addSubview(namelabel)
         view.addSubview(explanationLabel)
         view.addSubview(label2)
+        view.addSubview(label3)
+        view.addSubview(pushButton)
+        view.addSubview(imageView)
+        
+        
         
         // 네비게이션 바 높이를 고려해 이미지 아래에 이름 라벨 배치
         NSLayoutConstraint.activate([
@@ -68,7 +89,19 @@ class OtherProfileController: UIViewController {
             explanationLabel.topAnchor.constraint(equalTo: namelabel.bottomAnchor, constant: 16),
             
             label2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            label2.topAnchor.constraint(equalTo: explanationLabel.bottomAnchor, constant: 51)
+            label2.topAnchor.constraint(equalTo: explanationLabel.bottomAnchor, constant: 51),
+            
+            label3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            label3.topAnchor.constraint(equalTo: label2.bottomAnchor, constant: 83),
+            
+            pushButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            pushButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            pushButton.topAnchor.constraint(equalTo: label3.bottomAnchor, constant: 250),
+            
+            imageView.leadingAnchor.constraint(equalTo: pushButton.trailingAnchor, constant: -180),
+            imageView.bottomAnchor.constraint(equalTo: pushButton.topAnchor, constant: -5),
+
+            
         ])
 
     }
@@ -87,37 +120,102 @@ class OtherProfileController: UIViewController {
     }
     
     private func setupTypeLabels() {
-        // 낭만형 라벨 생성
-        let romanceLabel = createRoundedLabel(text: "🥰 낭만형")
-        view.addSubview(romanceLabel)
-        
-        // 리드형 라벨 생성
-        let leadLabel = createRoundedLabel(text: "🧑‍🏫 리드형")
-        view.addSubview(leadLabel)
-        
-        // 낭만형과 리드형 라벨 배치
-        NSLayoutConstraint.activate([
-            romanceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            romanceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 250),
+            // 낭만형 라벨 생성
+            let romanceLabel = createRoundedLabel(text: "🥰 낭만형")
+            view.addSubview(romanceLabel)
             
-            leadLabel.leadingAnchor.constraint(equalTo: romanceLabel.trailingAnchor, constant: 16),
-            leadLabel.topAnchor.constraint(equalTo: romanceLabel.topAnchor)
-        ])
-    }
-    
-    // 둥근 모서리와 배경색이 있는 커스텀 라벨 생성 함수
-    private func createRoundedLabel(text: String) -> UILabel {
-        let label = UILabel()
-        label.text = text
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        label.textColor = .black
-        label.textAlignment = .center
-        label.backgroundColor = .white
-        label.layer.cornerRadius = 15 // 둥근 모서리 설정
-        label.layer.masksToBounds = true
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        return label
-    }
-}
+            // 리드형 라벨 생성
+            let leadLabel = createRoundedLabel(text: "🧑‍🏫 리드형")
+            view.addSubview(leadLabel)
+            
+            // 낭만형과 리드형 라벨 배치
+            NSLayoutConstraint.activate([
+                romanceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+                romanceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 250),
+                
+                leadLabel.leadingAnchor.constraint(equalTo: romanceLabel.trailingAnchor, constant: 16),
+                leadLabel.topAnchor.constraint(equalTo: romanceLabel.topAnchor)
+            ])
+            
+            // label3 아래에 배치할 추가 라벨 생성
+            let sportsLabel = createRoundedLabel(text: "🏃‍♂️ 스포츠형")
+            let artLabel = createRoundedLabel(text: "🎨 아트형")
+            let GamesLabel = createRoundedLabel(text: "🎮 게임형")
+            
+            view.addSubview(sportsLabel)
+            view.addSubview(artLabel)
+            view.addSubview(GamesLabel)
+            
+            // label3 아래에 스포츠형과 아트형 라벨 배치
+            NSLayoutConstraint.activate([
+                sportsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+                sportsLabel.topAnchor.constraint(equalTo: romanceLabel.bottomAnchor, constant: 47),
+                
+                artLabel.leadingAnchor.constraint(equalTo: sportsLabel.trailingAnchor, constant: 16),
+                artLabel.topAnchor.constraint(equalTo: sportsLabel.topAnchor),
+                
+                GamesLabel.leadingAnchor.constraint(equalTo: artLabel.trailingAnchor, constant: 16),
+                GamesLabel.topAnchor.constraint(equalTo: artLabel.topAnchor)
+            ])
+        
+        let sociaLabel = createRoundedLabel(text: "💬 소셜형")
+        let studyLabel = createRoundedLabel(text: "📚 학습형")
+        let natureLabel = createRoundedLabel(text: "🌿 자연형")
+        
+        view.addSubview(sociaLabel)
+        view.addSubview(studyLabel)
+        view.addSubview(natureLabel)
+        
+        NSLayoutConstraint.activate([
+            sociaLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            sociaLabel.topAnchor.constraint(equalTo: artLabel.bottomAnchor, constant: 8),
+            
+            studyLabel.leadingAnchor.constraint(equalTo: sociaLabel.trailingAnchor, constant: 16),
+            studyLabel.topAnchor.constraint(equalTo: sociaLabel.topAnchor),
+            
+            natureLabel.leadingAnchor.constraint(equalTo: studyLabel.trailingAnchor, constant: 16),
+            natureLabel.topAnchor.constraint(equalTo: studyLabel.topAnchor)
+            ])
+        }
+        
+    private func setupPushButton() {
+          let pushButton = UIButton()
+          pushButton.setTitle("서현님께 나를 알리기", for: .normal)
+          pushButton.setTitleColor(.white, for: .normal)
+          pushButton.backgroundColor = UIColor(hex: "A944E4")
+          pushButton.layer.cornerRadius = 10
+          pushButton.translatesAutoresizingMaskIntoConstraints = false
+          
+          // 버튼 클릭 시 동작할 메서드 추가
+          pushButton.addTarget(self, action: #selector(pushButtonTapped), for: .touchUpInside)
+          
+          view.addSubview(pushButton)
+          
+          NSLayoutConstraint.activate([
+              pushButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+              pushButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+              pushButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
+              pushButton.heightAnchor.constraint(equalToConstant: 50)
+          ])
+      }
+      
+      @objc private func pushButtonTapped() {
+          print("버튼이 눌렸습니다!")
+          // 추가로 실행할 코드나 이동할 뷰 컨트롤러를 작성할 수 있습니다.
+      }
+      
+      private func createRoundedLabel(text: String) -> UILabel {
+          let label = UILabel()
+          label.text = text
+          label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+          label.textColor = .black
+          label.textAlignment = .center
+          label.backgroundColor = .white
+          label.layer.cornerRadius = 15
+          label.layer.masksToBounds = true
+          label.translatesAutoresizingMaskIntoConstraints = false
+          label.widthAnchor.constraint(equalToConstant: 100).isActive = true
+          label.heightAnchor.constraint(equalToConstant: 30).isActive = true
+          return label
+      }
+  }
