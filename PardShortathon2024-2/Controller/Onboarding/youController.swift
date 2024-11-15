@@ -1,4 +1,11 @@
 //
+//  22222.swift
+//  PardShortathon2024-2
+//
+//  Created by 김사랑 on 11/16/24.
+//
+
+//
 //  SetMyHobbyViewController.swift
 //  PardShortathon2024-2
 //
@@ -14,7 +21,7 @@
 
 import UIKit
 
-class SetMyHobbyViewController: UIViewController {
+class youController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
