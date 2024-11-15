@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0C42E5122CE72D0F00A628F0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0C42E5112CE72D0F00A628F0 /* .gitignore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0C42E4DF2CE7200200A628F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		0C42E4C82CE7200100A628F0 /* PardShortathon2024-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PardShortathon2024-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C42E4DE2CE7200200A628F0 /* PardShortathon2024-2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PardShortathon2024-2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C42E4E82CE7200200A628F0 /* PardShortathon2024-2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PardShortathon2024-2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C42E5112CE72D0F00A628F0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -88,6 +93,7 @@
 		0C42E4BF2CE7200100A628F0 = {
 			isa = PBXGroup;
 			children = (
+				0C42E5112CE72D0F00A628F0 /* .gitignore */,
 				0C42E4CA2CE7200100A628F0 /* PardShortathon2024-2 */,
 				0C42E4E12CE7200200A628F0 /* PardShortathon2024-2Tests */,
 				0C42E4EB2CE7200200A628F0 /* PardShortathon2024-2UITests */,
@@ -225,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C42E5122CE72D0F00A628F0 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +301,6 @@
 				INFOPLIST_FILE = "PardShortathon2024-2/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,7 +328,6 @@
 				INFOPLIST_FILE = "PardShortathon2024-2/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
