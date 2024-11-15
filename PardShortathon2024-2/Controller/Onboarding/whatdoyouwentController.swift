@@ -1,31 +1,26 @@
 //
-//  SetMyHobbyViewController.swift
+//  whatdoyouwent.swift
 //  PardShortathon2024-2
 //
-//  Created by KimDogyung on 11/16/24.
+//  Created by 김사랑 on 11/16/24.
 //
 
-//
-//  SetMyTypeViewController.swift
-//  PardShortathon2024-2
-//
-//  Created by KimDogyung on 11/16/24.
 
 
 import UIKit
 
-class SetMyHobbyViewController: UIViewController {
+class whatdoyouwentController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setGradientBackground()
-        setupUI()
+        setupTypeButtons()
     }
     
-    private func setupUI() {
-        // 타이틀 레이블
-        let titleLabel = createLabel(text: "나는 어떤 취미를 가지고 있나요?", fontSize: 20, isBold: true)
-        let subtitleLabel = createLabel(text: "평소에 나의 여가스타일을 토대로,\n연인과 함께 즐기고 싶은 취미를 선택해주세요!", fontSize: 14, isBold: false)
+    private func setupTypeButtons() {
+        // Section title labels
+        let titleLabel = createLabel(text: "나는 어떤 연애 유형인가요?", fontSize: 20, isBold: true)
+        let subtitleLabel = createLabel(text: "평소에 나의 연애스타일을 토대로,\n나를 설명하는 하나의 키워드를 선택해주세요!", fontSize: 14, isBold: false)
         
         view.addSubview(titleLabel)
         view.addSubview(subtitleLabel)
@@ -41,41 +36,32 @@ class SetMyHobbyViewController: UIViewController {
             subtitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
-        // Create hobby buttons
-        let sportsLabel = createRoundedButton(text: "🏃‍♂️ 스포츠형")
-        let artLabel = createRoundedButton(text: "🎨 아트형")
-        let gamesLabel = createRoundedButton(text: "🎮 게임형")
-        let socialLabel = createRoundedButton(text: "💬 소셜형")
-        let studyLabel = createRoundedButton(text: "📚 학습형")
-        let natureLabel = createRoundedButton(text: "🌿 자연형")
-        let noSelectionLabel = createRoundedButton(text: "🌿 선택 없음")
+        // Create type buttons
+        let leadButton = createRoundedButton(text: "🧑‍🏫 리드형")
+        let dependentButton = createRoundedButton(text: "🫂 의존형")
+        
+        let romanticButton = createRoundedButton(text: "😍 낭만형")
+        let realisticButton = createRoundedButton(text: "😌 현실형")
         
         // Add buttons to the view
-        let hobbyButtons = [sportsLabel, artLabel, gamesLabel, socialLabel, studyLabel, natureLabel, noSelectionLabel]
-        hobbyButtons.forEach { view.addSubview($0) }
+        view.addSubview(leadButton)
+        view.addSubview(dependentButton)
+        view.addSubview(romanticButton)
+        view.addSubview(realisticButton)
         
-        // Layout buttons in a grid
+        // Layout buttons
         NSLayoutConstraint.activate([
-            sportsLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 40),
-            sportsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            leadButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            leadButton.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 40),
             
-            artLabel.leadingAnchor.constraint(equalTo: sportsLabel.trailingAnchor, constant: 16),
-            artLabel.topAnchor.constraint(equalTo: sportsLabel.topAnchor),
+            dependentButton.leadingAnchor.constraint(equalTo: leadButton.trailingAnchor, constant: 16),
+            dependentButton.topAnchor.constraint(equalTo: leadButton.topAnchor),
             
-            gamesLabel.leadingAnchor.constraint(equalTo: artLabel.trailingAnchor, constant: 16),
-            gamesLabel.topAnchor.constraint(equalTo: sportsLabel.topAnchor),
+            romanticButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            romanticButton.topAnchor.constraint(equalTo: leadButton.bottomAnchor, constant: 20),
             
-            socialLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            socialLabel.topAnchor.constraint(equalTo: sportsLabel.bottomAnchor, constant: 16),
-            
-            studyLabel.leadingAnchor.constraint(equalTo: socialLabel.trailingAnchor, constant: 16),
-            studyLabel.topAnchor.constraint(equalTo: socialLabel.topAnchor),
-            
-            natureLabel.leadingAnchor.constraint(equalTo: studyLabel.trailingAnchor, constant: 16),
-            natureLabel.topAnchor.constraint(equalTo: socialLabel.topAnchor),
-            
-            noSelectionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            noSelectionLabel.topAnchor.constraint(equalTo: socialLabel.bottomAnchor, constant: 16)
+            realisticButton.leadingAnchor.constraint(equalTo: romanticButton.trailingAnchor, constant: 16),
+            realisticButton.topAnchor.constraint(equalTo: romanticButton.topAnchor),
         ])
         
         // Create Next button
@@ -124,8 +110,6 @@ class SetMyHobbyViewController: UIViewController {
         return label
     }
     
- 
-    
     @objc private func typeButtonTapped(_ sender: UIButton) {
         // Toggle selection state
         sender.isSelected.toggle()
@@ -140,7 +124,7 @@ class SetMyHobbyViewController: UIViewController {
     
     @objc private func handleNext() {
         // Navigate to the next view controller
-        let nextVC = whatdoyouwentController() // Replace with your actual next view controller
+        let nextVC = youController() // Replace with your actual next view controller
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }
