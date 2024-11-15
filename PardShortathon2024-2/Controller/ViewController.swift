@@ -1,7 +1,6 @@
 import UIKit
 
 class ViewController: UITabBarController {
-    private var proximityManager: ProximityManager?
     
     let label:UILabel = {
         let label = UILabel()
@@ -9,19 +8,11 @@ class ViewController: UITabBarController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        proximityManager = ProximityManager(userID: "User123")
-        
-        // Request notification permissions
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
-            if granted {
-                print("Notification permissions granted.")
-            } else if let error = error {
-                print("Notification permission error: \(error)")
-            }
-        }
         setTabBar()
         customizeTabBarAppearance()
     }
