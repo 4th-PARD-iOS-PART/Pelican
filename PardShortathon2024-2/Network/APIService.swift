@@ -6,12 +6,12 @@
 //
 
 // 서버와 통신할 때 사용되는 기본 사용자 모델이에요!
-struct User: Codable {
-    let id: Int?
-    let name: String
-    let part: String
-    let age: Int
-}
+//struct User: Codable {
+//    let id: Int?
+//    let name: String
+//    let part: String
+//    let age: Int
+//}
 
 struct UpdateUserRequest: Codable {
     let name: String
