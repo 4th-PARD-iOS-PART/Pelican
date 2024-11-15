@@ -16,7 +16,7 @@ class ViewController: UITabBarController {
     
     func setTabBar() {
         let vc1 = UINavigationController(rootViewController: LocationViewController())
-        let vc2 = UINavigationController(rootViewController: ChatViewController())
+        let vc2 = UINavigationController(rootViewController: OtherProfileController())
         let vc3 = UINavigationController(rootViewController: ProfileViewController())
         
         self.viewControllers = [vc1, vc2, vc3]
@@ -33,7 +33,7 @@ class ViewController: UITabBarController {
     }
 }
 
-//setGradientBackground() 이 코드 넣어서 어디든지 백그라운드 컬러 사용 가능 
+//setGradientBackground() 이 코드 넣어서 어디든지 백그라운드 컬러 사용 가느
 extension UIViewController {
     func setGradientBackground() {
         let gradientLayer = CAGradientLayer()
