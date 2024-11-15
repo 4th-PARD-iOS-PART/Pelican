@@ -7,6 +7,7 @@
 import UIKit
 
 class NicknameViewController: UIViewController {
+    
     // Title Label
     let mainLabel: UILabel = {
         let label = UILabel()
@@ -53,9 +54,10 @@ class NicknameViewController: UIViewController {
     let nextButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("다음으로", for: .normal)
-        button.backgroundColor = .gray
+        button.backgroundColor = .gray // Initial color for disabled state
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 8
+        button.isEnabled = false // Disabled by default
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -64,11 +66,12 @@ class NicknameViewController: UIViewController {
         super.viewDidLoad()
         setGradientBackground()
         setupLayout()
+        
+        nicknameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         nextButton.addTarget(self, action: #selector(handleContinue), for: .touchUpInside)
     }
     
     private func setupLayout() {
-        
         // Adding subviews
         view.addSubview(mainLabel)
         view.addSubview(subtitleLabel)
@@ -78,32 +81,37 @@ class NicknameViewController: UIViewController {
         
         // Constraints
         NSLayoutConstraint.activate([
-            // Main Label
             mainLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             mainLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             mainLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
-            // Subtitle Label
             subtitleLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 8),
             subtitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             subtitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
-            // Page Control
             pageControl.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 20),
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            // Nickname TextField
             nicknameTextField.topAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: 20),
             nicknameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             nicknameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             nicknameTextField.heightAnchor.constraint(equalToConstant: 50),
             
-            // Next Button
             nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             nextButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    @objc private func textFieldDidChange() {
+        if let text = nicknameTextField.text, !text.isEmpty {
+            nextButton.backgroundColor = .systemBlue // Enabled color
+            nextButton.isEnabled = true
+        } else {
+            nextButton.backgroundColor = .gray // Disabled color
+            nextButton.isEnabled = false
+        }
     }
     
     @objc private func handleContinue() {
@@ -114,15 +122,38 @@ class NicknameViewController: UIViewController {
             return
         }
         
+        print("Navigating to SetMyTypeViewController") // Debugging log
+        
         // Save onboarding completion status
         UserDefaults.standard.set(true, forKey: "HasCompletedOnboarding")
         
-        // Transition to main app
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            let mainApp = ViewController()
-            window.rootViewController = mainApp
-            window.makeKeyAndVisible()
+        // Navigate to SetMyTypeViewController
+        let setMyTypeVC = SetMyTypeViewController()
+        
+        if let navigationController = navigationController {
+            navigationController.pushViewController(setMyTypeVC, animated: true)
+        } else {
+            print("Error: Navigation controller is nil") // Additional log for debugging
         }
     }
 }
+
+//@objc private func handleContinue() {
+//    guard let nickname = nicknameTextField.text, !nickname.isEmpty else {
+//        let alert = UIAlertController(title: "Error", message: "Please enter a nickname", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .default))
+//        present(alert, animated: true)
+//        return
+//    }
+//
+//    // Save onboarding completion status
+//    UserDefaults.standard.set(true, forKey: "HasCompletedOnboarding")
+//
+//    // Transition to main app
+//    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//       let window = windowScene.windows.first {
+//        let mainApp = ViewController()
+//        window.rootViewController = mainApp
+//        window.makeKeyAndVisible()
+//    }
+//}

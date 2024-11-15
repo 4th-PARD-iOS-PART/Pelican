@@ -20,31 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Notification permission error: \(error)")
             }
         }
-
-        // Initialize the window
-        window = UIWindow(frame: UIScreen.main.bounds)
-
-         //For testing, reset onboarding
-        UserDefaults.standard.set(false, forKey: "HasCompletedOnboarding")
-
-        let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "HasCompletedOnboarding")
-        print("HasCompletedOnboarding: \(hasCompletedOnboarding)")
-
-        if hasCompletedOnboarding {
-            print("Loading Main App")
-            window?.rootViewController = ViewController()
-        } else {
-            print("Loading Onboarding Flow")
-            window?.rootViewController = UINavigationController(rootViewController: NicknameViewController())
-        }
-
-        window?.makeKeyAndVisible()
+        
         return true
     }
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
+    
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
 }
