@@ -1,13 +1,6 @@
-//
-//  ViewController.swift
-//  PardShortathon2024-2
-//
-//  Created by KimDogyung on 11/15/24.
-//
-
 import UIKit
 
-class LocationViewController: UIViewController {
+class ProfileViewController: UIViewController {
     
     let label:UILabel = {
         let label = UILabel()

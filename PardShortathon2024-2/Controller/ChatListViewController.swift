@@ -1,6 +1,6 @@
 import UIKit
 
-class LocationViewController: UIViewController {
+class ChatListViewController: UIViewController {
     
     let label:UILabel = {
         let label = UILabel()

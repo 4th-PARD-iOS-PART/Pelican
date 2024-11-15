@@ -20,15 +20,15 @@ class ViewController: UITabBarController {
         let vc3 = UINavigationController(rootViewController: ProfileViewController())
         
         self.viewControllers = [vc1, vc2, vc3]
-        self.tabBar.tintColor = .systemPink
-        self.tabBar.backgroundColor = .gray
+        self.tabBar.tintColor = #colorLiteral(red: 0.7270904779, green: 0.3866576552, blue: 0.9158701301, alpha: 1)
+        self.tabBar.backgroundColor = .white
         
         guard let tabBarItems = self.tabBar.items else {return}
-        tabBarItems[0].image = UIImage(systemName: "face.smiling")
-        tabBarItems[1].image = UIImage(systemName: "moon.fill")
-        tabBarItems[2].image = UIImage(systemName: "pawprint.fill")
-        tabBarItems[0].title = "Location"
-        tabBarItems[1].title = "Chat"
-        tabBarItems[2].title = "Profile"
+        tabBarItems[0].image = UIImage(systemName: "hearts")
+        tabBarItems[1].image = UIImage(systemName: "message")
+        tabBarItems[2].image = UIImage(systemName: "user")
+        tabBarItems[0].title = "내 주위 띠링"
+        tabBarItems[1].title = "채팅"
+        tabBarItems[2].title = "내 프로필"
     }
 }
