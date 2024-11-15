@@ -19,5 +19,16 @@
 			</array>
 		</dict>
 	</dict>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+        <string>We use Bluetooth to detect nearby users of the app.</string>
+        <key>NSBluetoothPeripheralUsageDescription</key>
+        <string>We use Bluetooth to detect and interact with nearby users of the app.</string>
+        <key>UIBackgroundModes</key>
+        <array>
+            <string>bluetooth-central</string>
+            <string>bluetooth-peripheral</string>
+        </array>
+        <key>NSUserTrackingUsageDescription</key>
+        <string>This app uses Bluetooth to detect nearby users.</string>
 </dict>
 </plist>
